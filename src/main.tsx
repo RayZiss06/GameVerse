@@ -9,14 +9,11 @@ const queryClient = new QueryClient() // Create a new instance of QueryClient fo
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    {" "}
-    // Helps catch problematic React patterns during development.
+    {/* Helps catch problematic React patterns during development.*/}
     <BrowserRouter>
-      {" "}
-      // for client-side routing
+      {/* BrowserRouter provides client-side routing. */}
       <QueryClientProvider client={queryClient}>
-        {" "}
-        // Provides the QueryClient instance to the application, enabling TanStack ReactQuery for API/server-state management.
+        {/* Provides the QueryClient instance to the application, enabling TanStack ReactQuery for API/server-state management.*/}
         <App />
       </QueryClientProvider>
     </BrowserRouter>
