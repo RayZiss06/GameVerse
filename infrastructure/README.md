@@ -36,7 +36,7 @@ docker commands
 docker compose --env-file infrastructure/docker/.env -f infrastructure/docker/compose/docker-compose.yml config
 docker compose --env-file infrastructure/docker/.env -f infrastructure/docker/compose/docker-compose.yml ps
 
-docker compose -f infrastructure/docker/compose/docker-compose.yml config
-docker compose -f infrastructure/docker/compose/docker-compose.yml up -d postgres
-docker compose -f infrastructure/docker/compose/docker-compose.yml ps
+docker compose --project-directory . -f infrastructure/docker/compose/docker-compose.yml config
+docker compose --project-directory .  -f infrastructure/docker/compose/docker-compose.yml up -d 
+docker compose --project-directory .  -f infrastructure/docker/compose/docker-compose.yml ps
 
