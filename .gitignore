@@ -119,3 +119,5 @@ minio-data/
 *.swp
 *.swo
 *.bak
+
+current_status.md
