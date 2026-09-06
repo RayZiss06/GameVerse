@@ -8,7 +8,7 @@ import {
 } from "react";
 
 import keycloak from "./keycloak";
-import type { AuthContextValue, AuthUser } from "./types";
+import type { AuthContextValue, AuthUser, GameVerseRole } from "./types";
 
 export const AuthContext = createContext<AuthContextValue | undefined>(
   undefined,
@@ -42,13 +42,22 @@ export function KeycloakProvider({ children }: KeycloakProviderProps) {
         setIsAuthenticated(authenticated);
         setToken(keycloak.token);
 
-        if (authenticated) {
+        if (authenticated && keycloak.tokenParsed) {
+          const roles = keycloak.tokenParsed.realm_access?.roles ?? [];
+
+          const gameVerseRoles = roles.filter((role): role is GameVerseRole =>
+            ["USER", "MODERATOR", "ADMIN", "SUPERADMIN"].includes(role),
+          );
+
           setUser({
-            username: keycloak.tokenParsed?.preferred_username,
-            email: keycloak.tokenParsed?.email,
-            firstName: keycloak.tokenParsed?.given_name,
-            lastName: keycloak.tokenParsed?.family_name,
+            username: keycloak.tokenParsed.preferred_username,
+            email: keycloak.tokenParsed.email,
+            firstName: keycloak.tokenParsed.given_name,
+            lastName: keycloak.tokenParsed.family_name,
+            roles: gameVerseRoles,
           });
+        } else {
+          setUser(null);
         }
       } catch (error) {
         console.error("Keycloak initialization failed:", error);
@@ -68,17 +77,17 @@ export function KeycloakProvider({ children }: KeycloakProviderProps) {
 
   const login = useCallback(async () => {
     await keycloak.login({
-      redirectUri: window.location.origin,
+      redirectUri: `${window.location.origin}/home`,
     });
   }, []);
 
   const logout = useCallback(async () => {
     await keycloak.logout({
-      redirectUri: window.location.origin,
+      redirectUri: `${window.location.origin}/login`,
     });
   }, []);
 
-  const hasRole = useCallback((role: string) => {
+  const hasRole = useCallback((role: GameVerseRole) => {
     return keycloak.hasRealmRole(role);
   }, []);
 

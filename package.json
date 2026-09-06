@@ -16,7 +16,6 @@
     "axios": "^1.19.0",
     "keycloak-js": "^26.2.4",
     "lucide-react": "^1.31.0",
-    "oidc-client-ts": "^3.5.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-hook-form": "^7.85.0",

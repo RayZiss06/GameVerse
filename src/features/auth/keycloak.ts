@@ -1,9 +1,10 @@
 import Keycloak from "keycloak-js";
+import { env } from "@/app/config/env";
 
 const keycloak = new Keycloak({
-  url: "http://localhost:8080",
-  realm: "gameverse",
-  clientId: "gameverse-web",
+  url: env.authUrl,
+  realm: env.authRealm,
+  clientId: env.authClientId,
 });
 
 export default keycloak;

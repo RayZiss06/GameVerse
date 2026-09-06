@@ -5,7 +5,14 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>GameVerse Home</h1>
+      <h1>GameVerse</h1>
+
+      <h2>Authentication Test</h2>
+
+      <p>
+        Authentication:
+        <strong> Authenticated</strong>
+      </p>
 
       <hr />
 
@@ -19,15 +26,19 @@ export default function HomePage() {
         Name: {user?.firstName ?? ""} {user?.lastName ?? ""}
       </p>
 
-      <h2>Roles</h2>
+      <hr />
 
-      <p>USER: {hasRole("USER") ? "Yes" : "No"}</p>
+      <h2>GameVerse Roles</h2>
 
-      <p>MODERATOR: {hasRole("MODERATOR") ? "Yes" : "No"}</p>
+      <p>USER: {hasRole("USER") ? "YES" : "NO"}</p>
 
-      <p>ADMIN: {hasRole("ADMIN") ? "Yes" : "No"}</p>
+      <p>MODERATOR: {hasRole("MODERATOR") ? "YES" : "NO"}</p>
 
-      <p>SUPERADMIN: {hasRole("SUPERADMIN") ? "Yes" : "No"}</p>
+      <p>ADMIN: {hasRole("ADMIN") ? "YES" : "NO"}</p>
+
+      <p>SUPERADMIN: {hasRole("SUPERADMIN") ? "YES" : "NO"}</p>
+
+      <hr />
 
       <button onClick={logout}>Logout</button>
     </div>
