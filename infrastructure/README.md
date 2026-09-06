@@ -40,3 +40,5 @@ docker compose --project-directory . -f infrastructure/docker/compose/docker-com
 docker compose --project-directory .  -f infrastructure/docker/compose/docker-compose.yml up -d 
 docker compose --project-directory .  -f infrastructure/docker/compose/docker-compose.yml ps
 
+
+

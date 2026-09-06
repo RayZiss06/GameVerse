@@ -1,4 +1,4 @@
-import { AppRoutes } from "./routes";
+import { AppRoutes } from "./routes/AppRoutes";
 import { apiClient } from '@/services/api/client'
 
 function App() {
